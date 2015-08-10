@@ -1,0 +1,28 @@
+<!--
+ Describes the plugin archive
+  
+ @author Marco Meschieri
+ @version 4.0
+-->
+<assembly>
+	<id>plugin</id>
+	<formats>
+		<format>zip</format>
+	</formats>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>WEB-INF/lib</outputDirectory>
+			<includes>
+              <include>org.springmodules:*</include>
+              <include>org.jbpm.jbpm3:*</include>
+              <include>bsh:*</include>
+              <include>javax.jcr:*</include>
+              <include>com.thoughtworks.xstream:*</include>
+              <include>xpp3:*</include>
+              <include>org.freemarker:*</include>
+              <include>javassist:*</include>
+			</includes>
+		</dependencySet>
+	</dependencySets>
+</assembly>

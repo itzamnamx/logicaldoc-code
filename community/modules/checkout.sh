@@ -1,0 +1,1 @@
+svn checkout https://logicaldoc.svn.sourceforge.net/svnroot/logicaldoc/community/modules/logicaldoc-installer/trunk logicaldoc-installer

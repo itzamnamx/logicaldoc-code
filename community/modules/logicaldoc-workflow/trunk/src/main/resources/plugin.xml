@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 1.0" "http://jpf.sourceforge.net/plugin_1_0.dtd">
+<plugin id="logicaldoc-workflow" version="6.0.2" class="com.logicaldoc.workflow.WorkflowPlugin">
+	<requires>
+		<import plugin-id="logicaldoc-core" />
+	</requires>
+
+	<extension-point id="WorkflowModel">
+        <parameter-def id="name" />
+		<parameter-def id="controller" />
+		<parameter-def id="transformer" />
+	</extension-point>
+		
+	<extension plugin-id="logicaldoc-workflow" point-id="WorkflowModel"  id="taskWorkflowModel">
+		<parameter id="name" value="WorkflowTask"/>
+		<parameter id="controller" value="com.logicaldoc.workflow.editor.controll.TaskController"/>
+		<parameter id="transformer" value="com.logicaldoc.workflow.transform.JBPMWorkflowTask"/>
+	</extension>
+	<extension plugin-id="logicaldoc-workflow" point-id="WorkflowModel"  id="transitionWorkflowModel">
+		<parameter id="name" value="Transition"/>
+		<parameter id="controller" value="com.logicaldoc.workflow.editor.controll.TransitionController"/>
+		<parameter id="transformer" value=""/>
+	</extension>
+	<extension plugin-id="logicaldoc-workflow" point-id="WorkflowModel"  id="endstateWorkflowModel">
+		<parameter id="name" value="EndState"/>
+		<parameter id="controller" value="com.logicaldoc.workflow.editor.controll.EndStateController"/>
+		<parameter id="transformer" value="com.logicaldoc.workflow.transform.JBPMEndState"/>
+	</extension>
+
+	<extension plugin-id="logicaldoc-core" point-id="DbInit" id="workflowDbInit">
+		<parameter id="position" value="10" />
+		<parameter id="name" value="logicaldoc-workflow" />
+		<parameter id="sqlFile" value="sql/logicaldoc-workflow.sql" />
+	</extension>
+	
+	<extension plugin-id="logicaldoc-core" point-id="DbInit" id="jbpmInit">
+		<parameter id="position" value="11" />
+		<parameter id="name" value="jbpm" />
+		<parameter id="sqlFile" value="sql/jbpm.jpdl.sql" />
+	</extension>
+	
+    <extension plugin-id="logicaldoc-core" point-id="DatabaseMapping" id="worklow">
+        <parameter id="mapping" value="classpath*:org/jbpm/**/*.hbm.xml"/>
+        <parameter id="position" value="2"/>
+    </extension>
+    
+    <extension plugin-id="logicaldoc-core" point-id="Feature" id="f19">
+	    <parameter id="name" value="Feature_19" />
+    </extension>
+</plugin>
